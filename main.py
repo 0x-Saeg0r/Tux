@@ -52,7 +52,7 @@ while boucle1:
             content = input("")
             print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Webhook Username"))
             username = input("")
-            print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Webhook Avatar url"))
+            print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Webhook Avatar URL"))
             avatar = input("")
 
             data = {
