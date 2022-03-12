@@ -58,10 +58,16 @@ while boucle1:
                 data = {
     "content" : content,
     "username" : username,
-    }
+    }          
+                print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Webhook Base successfuly set"))
+                sleep(1)
+
+
             elif answer3 == ("1"):
                 print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Webhook Avatar URL"))
                 avatar = input("")
+                print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Webhook Base successfuly set"))
+                sleep(1)
 
                 data = {
         "content" : content,
@@ -75,7 +81,7 @@ while boucle1:
             if answer == ("0"):
                 print(Colorate.Horizontal(Colors.green_to_cyan, "[!] Webhook posted !"))
                 requests.post(webhook_url, json = data)
-                sleep(2)
+                sleep(1)
 
             elif answer == ("1"):
                 system('cls')
@@ -84,61 +90,20 @@ while boucle1:
                 title = input("")
                 print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Embed Description"))
                 description = input("")
-                print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Do you want to add fields ? 1 = yes ; 0 = no"))
-                answer4 = input("")
-                if answer4 == ("0"):
-                    print(Colorate.Horizontal(Colors.green_to_cyan, "[?] No fields for this time !"))
-                    data["embeds"] = [
-                        {                        
-                            "type": "rich",
-                            "title": title,
-                            "description": description,
-                            "color": 0x0000,                                                    
-                            }]
-                    sleep(0.5)                    
-                elif answer4 == ("1"):
-                    print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Field Name"))
-                    fieldname = input("")
-                    print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Field Value"))
-                    fieldvalue = input("")
+                print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Field Name"))
+                fieldname = input("")
+                print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Field Value"))
+                fieldvalue = input("")                   
+                    
 
                 print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Do you want an image ? 1 = yes : 0 = no"))
                 answer2 = input("")
-                
-                if answer2 == ("0") and answer4 == ("0"):
-                    data["embeds"] = [
-                        {                        
-                            "type": "rich",
-                            "title": title,
-                            "description": description,
-                            "color": 0x0000,                                                    
-                            }]
-                    requests.post(webhook_url, json = data)
-                    print(Colorate.Horizontal(Colors.green_to_cyan, "[!] Webhook posted !"))
-                    sleep(2)
-
-
-
-                if answer2 == ("0"):
-                    data["embeds"] = [
-                        {
-                        
-                            "type": "rich",
-                            "title": title,
-                            "description": description,
-                            "color": 0x0000,
-                            "fields": [
-                                {
-			"name": fieldname,
-			"value": fieldvalue
-		}],                    
-                    }]
-                    requests.post(webhook_url, json = data)
-                    print(Colorate.Horizontal(Colors.green_to_cyan, "[!] Webhook posted !"))
-                    sleep(2)
-                elif answer2 == ("1"):
+                if answer2 == ("1"): 
+                    
                     print(Colorate.Horizontal(Colors.green_to_cyan, "[?] Enter Image URL"))
                     url = input("")
+
+
                     data["embeds"] = [
                         {
                         
@@ -150,23 +115,48 @@ while boucle1:
                                     "url": url,
                                     "height": 0,
                                     "width": 0
-                        },
-                            "fields": [
-                                    {
-                "name": fieldname,
-                "value": fieldvalue
-            }],
-}]         
+                        },  "fields": [
+                            {
+                                "name": fieldname,
+			                    "value": fieldvalue 
+                            }
+                        ]
+
+}]
                     requests.post(webhook_url, json = data)
                     print(Colorate.Horizontal(Colors.green_to_cyan, "[!] Webhook posted !"))
-                    sleep(5)
+                    sleep(1)
+
+                elif answer2 == ("0"):
+                    data["embeds"] = [
+                        {
+                        
+                            "type": "rich",
+                            "title": title,
+                            "description": description,
+                            "color": 0x0000,
+                            "fields": [
+                                {
+                                "name": fieldname,
+			                    "value": fieldvalue
+                                }
+                            ]
+                            
+                    }]
+                    
+                         
+                    requests.post(webhook_url, json = data)
+                    print(Colorate.Horizontal(Colors.green_to_cyan, "[!] Webhook posted !"))
+                    sleep(1)
+
         except:
             system('cls')
+            print(Colorate.Horizontal(Colors.green_to_cyan, "[!] ERROR"))
 
     else:
             system('cls')
             print(Colorate.Diagonal(Colors.green_to_cyan, Center.XCenter(header_final)))
             print(Colorate.Horizontal(Colors.green_to_cyan, "[!] Please insert a valid link."))
-            sleep(2)
+            sleep(1)
 
             requests.post(webhook_url, json = data)
